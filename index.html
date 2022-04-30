@@ -4,31 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stronaOfilmach</title>
-    <script>
-       hello="Hello World";
-        liczba1 = "3";
-        liczba2 = 3
-        liczba3 = liczba1 + liczba2
+    <title>Document</title>
+</head><script>  
 
+document.addEventListener("DOMContentLoaded", function() {
 
-        console.log(hello);
-        document.addEventListener("DOMContentLoaded", function() {
-     
-const input = document.getElementById('pole');
-const log = document.getElementById('box');
+var input1 = document.getElementById('pole1');
+var input2 = document.getElementById('pole2');
 
-input.addEventListener('change', updateValue);
+input1.addEventListener('change', updateValue);
+input2.addEventListener('change', updateValue);
+
+function dodawanie(liczba1,liczba2) {
+
+  log = document.getElementById("box");
+  console.log(liczba1);
+  console.log(liczba2);
+  log.textContent = liczba1 + liczba2 ;
+
+}; 
 
 function updateValue(e) {
-  log.textContent = e.target.value;
+     pole1 = Number(document.getElementById('pole1').value);
+     pole2 = Number(document.getElementById('pole2').value);
+    dodawanie(pole1,pole2);
+   // dodawanie(4,3);
 }
 
+
 });
-    </script>
-</head>
-<body>
-    <input type="text" id="pole"/>
-    <div id="box"></div>
+
+</script>
+<body>    
+
+    <input id="pole1" type="text" />+
+    <input id="pole2" type="text" /> 
+    =    <div id="box"></div>
 </body>
-</html>
+</html> 
