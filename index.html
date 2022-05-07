@@ -51,9 +51,10 @@ function updateValue(e) {
 
 tabelka.addEventListener("click",zmiana)
 
-
+numberMove = 0
 firstMove = "x";
 function zmiana(e){
+  numberMove++;
   console.log(e.target.id)
   targetId = document.getElementById(e.target.id);
   if (targetId.innerHTML == " "){
@@ -66,8 +67,133 @@ function zmiana(e){
   firstMove = "x";
 }}
 
+reset = document.getElementById("reset")
+reset.addEventListener("click",resetGame)
+function resetGame(e){
+  document.getElementById("p1").innerHTML="";
+  document.getElementById("p2").innerHTML="";
+  document.getElementById("p3").innerHTML="";
+  document.getElementById("p4").innerHTML="";
+  document.getElementById("p5").innerHTML="";
+  document.getElementById("p6").innerHTML="";
+  document.getElementById("p7").innerHTML="";
+  document.getElementById("p8").innerHTML="";
+  document.getElementById("p9").innerHTML="";
+  tabelka.addEventListener("click",zmiana);
+  document.getElementById("reset").disabled = true;
+  numberMove=0;
+}
+
+p1=document.getElementById("p1").innerHTML;
+p2=document.getElementById("p2").innerHTML;
+p3=document.getElementById("p3").innerHTML;
+p4=document.getElementById("p4").innerHTML;
+p5=document.getElementById("p5").innerHTML;
+p6=document.getElementById("p6").innerHTML;
+p7=document.getElementById("p7").innerHTML;
+p8=document.getElementById("p8").innerHTML;
+p9=document.getElementById("p9").innerHTML;
+
+
+
+wy1=p1+p2+p3;
+wy2=p4+p5+p6;
+wy3=p7+p8+p9;
+wy4=p1+p4+p7;
+wy5=p2+p5+p8;
+wy6=p3+p6+p9;
+wy7=p1+p5+p9;
+wy8=p3+p5+p7;
+
+
+if (wy1=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy2=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy3=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy4=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy5=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy6=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy7=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy8=="xxx"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy1=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy2=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy3=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy4=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy5=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy6=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy7=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+if (wy8=="ooo"){
+  console.log ("win");
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
+}
+}
+if(numberMove==9){
+  reset.disabled = false;
+  tabelka.removeEventListener("click",zmiana);
 }
 });
+
+
 
 
 </script>
@@ -102,6 +228,8 @@ td {
     <td id="p9"> </td>
     </tr>
 
+<button disabled="disabled"id="reset">reset</button>
+
   </table>
 
 
@@ -116,5 +244,7 @@ td {
     
     <input id="pole2" type="text" /> 
     =    <div id="box"></div>
+    <button disabled="disabled"id="reset">reset</button>
+  
 </body>
 </html> 
