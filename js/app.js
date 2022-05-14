@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 tabelka.addEventListener("click",gra);
-firstMove = "x";
+firstMove = '<img class="image" src="/img/czarnyX.png" />';
+nameField = 'x';
 numberMove = 0 ;
 p=[];
 wygrana=[];
@@ -12,14 +13,15 @@ function gra(e){
   targetId = document.getElementById(e.target.id);
   if (targetId.innerHTML == "") {
     targetId.innerHTML = firstMove;
-  
+    targetId.setAttribute("name",nameField);
  
-  if(firstMove == "x"){
-    firstMove = "o";
+  if(firstMove == '<img class="image" src="/img/czarnyX.png" />'){
+    firstMove = '<img class="image" src="/img/czarneO.png" />';
+    nameField = "o"
   }
   else {
-    firstMove = "x";
-  
+    firstMove = '<img class="image" src="/img/czarnyX.png" />';
+    nameField = "x"
   }}
   reset = document.getElementById("reset");
   reset.addEventListener("click",resetGame)
@@ -33,7 +35,7 @@ function resetGame(e){
 }
 
 for(x=1;x<10;x++){
-  p[x]=document.getElementById("p"+x).innerHTML;
+  p[x]=document.getElementById("p"+x).getAttribute("name");
 }
 //p1=document.getElementById("p1").innerHTML;
 //p2=document.getElementById("p2").innerHTML;
@@ -54,7 +56,7 @@ for(x=1;x<10;x++){
 // wygrana8=p[3]+p[5]+p[7];
 
 function getElementP(elem,what) {
-    document.getElementById("p"+elem).innerHTML = '<div style="color:#00cc00">'+what+'</div>'
+    document.getElementById("p"+elem).innerHTML = '<img class="image" src="/img/zielony'+what+'.png" >'
   }
   //funkcja pozwala na przypisanie koloru do pola o danej wartości i ustaleniu symbolu wygranego
   function getResult(info) {
