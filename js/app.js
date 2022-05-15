@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   document.addEventListener("click", getSymbol);
   function getSymbol(e) {
-      console.log(e.target);
+      //console.log(e.target);
+  }
+
+  losuj = Math.floor(Math.random() * pierwiastki.length+1);
+  console.log(pierwiastki[losuj]);
+
+  document.addEventListener("click",getSymbol);
+  function getSymbol(e){
+    console.log(e.target);
   }
 });
