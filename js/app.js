@@ -1,18 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-
-  tabelka.addEventListener("click",gra);
+  numberMove = 0 ;
   firstMove = '<img class="image" src="/img/czarnyX.png" />';
   nameField = 'x';
-  numberMove = 0 ;
   p=[];
   wygrana=[];
-  statystyki=[];
   statystykax = 0 ;
   statystykao = 0 ;
+  tabelka.addEventListener("click",gra);
+  function resetGame(e){
+    for(x=1;x<10;x++){
+      document.getElementById("p"+x).innerHTML = "";
+    }
+    tabelka.addEventListener("click",gra)
+    document.getElementById("reset").disabled = true;
+    document.getElementById("result").innerHTML = "";
+    numberMove = 0;
+  }
+ 
+  
   function gra(e){
     numberMove++;
-    console.log (e.target.id);
+    console.log (numberMove);
     targetId = document.getElementById(e.target.id);
     if (targetId.innerHTML == "") {
       targetId.innerHTML = firstMove;
@@ -29,19 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
     reset = document.getElementById("reset");
     reset.addEventListener("click",resetGame)
     wygrana = [] ;
-    numberMove = 0;
-  function resetGame(e){
-    for(x=1;x<10;x++){
-      document.getElementById("p"+x).innerHTML = "";
-    }
-    tabelka.addEventListener("click",gra)
-    document.getElementById("reset").disabled = true;
-    document.getElementById("result").innerHTML = "";
 
-    numberMove=0;
-    
-  }
-  
+
+
   for(x=1;x<10;x++){
     p[x]=document.getElementById("p"+x).getAttribute("name");
   }
@@ -81,14 +80,13 @@ document.addEventListener("DOMContentLoaded", function() {
         //czy konfiguracja wygrana zgadza się z symbolem
           if (kto == "xxx") {
           //jeśli konfiguracja zgadza się z symbolem to koloruj
-          statystykax++;
             getElementP(par1,"x");
             getElementP(par2,"x");
             getElementP(par3,"x");
             getResult("Po wielkich bojach wygrały krzyżki");
             reset.disabled = false ;
             statystykax++;
-            document.getElementById("statystyki").innerHTML = statystykax;
+            document.getElementById("statystyki").innerHTML = "Krzyżyki "+statystykax;
             
         }
         if (kto == "ooo") {
@@ -99,15 +97,18 @@ document.addEventListener("DOMContentLoaded", function() {
             getResult("Po wielkich bojach wygrały kółka")
             reset.disabled = false ;
             statystykao++;
-            document.getElementById("statystyki").innerHTML = statystykao;
+            document.getElementById("statystyki").innerHTML = "Kółka "+ statystykao;
             
         }
+       for(x=1 ; x<10 ; x++){
+         document.getElementById("p"+x).removeAttribute("name");
+       }
         }
         
     }
-    console.log(statystykax);
+
     // document.getElementById("statystyki").innerHTML = "Krzyzyki" + statystyki
-    // document.getElementById("statystykao").innerHTML = "Kola" + statystykao
+    // document.getElementById("statystykao").innerHTML = "Kola" + statystyki
 
   wynik = [];
   wynik[1] = 'xxx';
@@ -124,6 +125,10 @@ document.addEventListener("DOMContentLoaded", function() {
       wygranaGry(8,wynik[x],3,5,7);
   }
   
+  if(numberMove==9){
+    reset.disabled = false;
+  }
+
   // if(wygrana1=="xxx"){
   //   console.log ("wygrałeś");
   //   reset.disabled = false ;
@@ -284,11 +289,6 @@ document.addEventListener("DOMContentLoaded", function() {
   //   }
   //   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
   // } 
-  
-  if(numberMove==9){
-    reset.disabled = false;
-    tabelka.removeEventListener("click",gra)
-  }
   
   }
   
