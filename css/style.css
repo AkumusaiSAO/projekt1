@@ -182,10 +182,10 @@ body {
     overflow:hidden;
   }
   
-  h1 {
+  #timer {
     margin:10px auto;
     text-align:center;
-    font: size px;
+    font-size: 50px;
     color:white;
     position:relative;
     left:0;
@@ -204,7 +204,7 @@ body {
         transition: .5s ease-in-out;
   }
   
-  h1:hover {
+  #timer:hover {
       left:20px;
     text-shadow:
       -1px 1px 0px #c4dbe2,
