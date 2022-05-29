@@ -12,11 +12,17 @@ for (x = 0; x < container.length; x++) {
 }
 game();
 
+resetButton=document.getElementById("reset");
+resetButton.style.display ="none";
+resetButton.addEventListener("click",resetFunction);
+
 function game() {
     console.log(repeatElements);
+    myInput.style.display ="block";
+    reset.style.display ="none";
     if (repeatElements.length >= elements.length) {
         clearInterval(x);
-        timer.innerHTML = "Koniec gry";
+        timer.innerHTML = "KONIEC GRY";
         console.log("koniec gry");
     } else {
         randomElement = Math.floor(Math.random() * elements.length);
@@ -36,8 +42,6 @@ function checkElement(event) {
             elementsSymbol[randomElement].parentElement.classList.add("goodAnswer");
             countDownDate +=( 5 * 1000 );
 
-        
-            
         } else {
             elementsSymbol[randomElement].parentElement.classList.remove("checked");
             elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
@@ -49,11 +53,13 @@ function checkElement(event) {
 }
 
 
+
+
 // Set the date we're counting down to
-var countDownDate = new Date().getTime() + ( 0.5 * 60 * 1000 );
+var countDownDate = new Date().getTime() + ( 1 * 60 * 1000 );
 // Update the count down every 1 second
-var x = setInterval (time,1000);
-function time() {
+var timerX = setInterval (timerFunction,1000);
+function timerFunction() {
 
   // Get today's date and time
   var now = new Date().getTime();
@@ -73,9 +79,57 @@ function time() {
   if (distance < 0) {
      clearInterval(x);
     document.getElementById("timer").innerHTML = "KONIEC GRY";
-    myInput.style.display = "none";
+    myInput.style.display ="none";
     elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
+    resetButton.style.display = "block";
     //game();
 
 }
 }
+resetButton=document.getElementById("reset");
+resetButton.style.display ="none";
+resetButton.addEventListener("click",resetFunction);
+
+function resetFunction(){
+    for(x=0;x<elements.length;x++){
+        elementsSymbol[x].parentElement.classList.remove("checked");
+        elementsSymbol[x].parentElement.classList.remove("goodAnswer");
+        elementsSymbol[x].parentElement.classList.remove("badAnswer");
+    }
+    countDownDate = new Date().getTime()+30*1000;
+    game();
+    timerX = setInterval(timerFunction, 1000);
+    repeatElements=[];
+    resetButton.style.display ="none" ;
+    myInput.style.display ="block";
+}
+
+
+let slideIndex = 1; 
+  showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+
+function bonus(){}
